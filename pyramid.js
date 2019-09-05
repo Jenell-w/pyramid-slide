@@ -1,44 +1,42 @@
-const rangeSelection = document.getElementById("range-selection")
-const rangeValue = document.getElementById("range")
-const brickType = document.getElementById("brick-type")
-
-let height = document.getElementById("myPyramid").value
+const brickType = document.getElementById("brick-type");
+const slider = document.getElementById("myPyramid");
 //rangeValue.innerHTML = rangeSelection.value;  //error is here - why is innerHTML null?.
 //redraw pyramid with diff types of bricks, depends on selection of user
 brickType.onchange = function(event) {
-    let height = rangeSelection.value;
-    drawPyramid(height);
-    
-rangeSelection.oninput = function(event) {
-    let height = rangeSelection.value
-    drawPyramid(height);
-}   
-function sliderFunction(){
-    return drawPyramid(height);
+    const slider = document.getElementById("myPyramid");
+
+    const pyrimid = document.getElementById("pyramid");
+    pyrimid.innerHTML = drawPyramid(slider.value, event.target.value);
 }
-function drawPyramid(height) {
+
+slider.oninput = function(event) {
+    const brickType = document.getElementById("brick-type");
+
+    const pyrimid = document.getElementById("pyramid");
+    pyrimid.innerHTML = drawPyramid(event.srcElement.value, brickType.value);
+}
+
+const drawPyramid = function(height, brickType) {
     //clear content
     document.getElementById("myPyramid").innerHTML = "";
-    rangeValue.innerHTML = rangeSelection.value
+    const rangeValue = document.getElementById("range-selection");
+    rangeValue.innerHTML = height
 
     // for each row....
-    for (var row = 0; row < height; row++) {
+    let rowStr = "";
+    for (let row = 0; row < height; row++) {
 
         // figure out number of bricks and spaces
-        var numBricks = row + 2;
-        var numSpaces = height - row - 1;
+        let numBricks = row + 2;
+        let numSpaces = height - row - 1;
 
         // build up a string for this row
-        var rowStr = "";
-        for (var i = 0; i < numSpaces; i++) {
-            var spaceChar = "&nbsp"; // this is the HTML encoding for a space " "
-            rowStr += spaceChar;
+        for (let i = 0; i < numSpaces; i++) {
+            rowStr += "&nbsp";
         }
-        for (var i = 0; i < numBricks; i++) {
-            rowStr += brickType.value;
+        for (let i = 0; i < numBricks; i++) {
+            rowStr += brickType;
         };
-       rowStr.push(rowStr);
-       } 
+    }
     return rowStr;
-}
 }
