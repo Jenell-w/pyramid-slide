@@ -1,7 +1,18 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <style></style>
+    <head>
+        <style>
+            #pyramid {
+                line-height: 0;
+                font-size: 30px;
+                }
+            
+            body {
+                font-family: "Courier New", monospace;
+                text-align: center;
+                    }
+                </style>
+    </head>
 <body>
     <h1>Customize Your Pyramid!</h1>
     <form id="draw-pyramid">
@@ -12,19 +23,20 @@
                 <option value="*">*</option>
                 <option value="JW">JW</option>
             </select>
-        </label><br><br>
+        </label>
+        <br>
+        <br>
         <label>How High?
             <div class="slidecontainer">
                 <input type="range" oninput="sliderfunction()" 
                 min="2" max="20" value="10" class="slider"
-                id="myPyramid"/> 
-                <p id="range-selection"></p>
-            </div>
-            <div id="pyramid"></div>
+                id="myPyramid"/> <br>
+                <p id="range-selection"><br></p>
+            </div> 
+            <div id="pyramid"> <br> </div>
 
         </label>
     </form>
-</head>  
 
 <script src="pyramid.js"></script>
 </body>
